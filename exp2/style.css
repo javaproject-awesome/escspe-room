@@ -1,0 +1,142 @@
+*{
+    box-sizing:border-box;
+    font-family:'Lucida Sans', sans-serif;
+    
+}
+
+body{
+    margin:0;
+    color:#9fd3c7;
+    text-align:center;
+
+    /* SMOKE BACKGROUND */
+    background-image: url("smoke1.avif");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed; /* cinematic effect */
+}
+
+/* HEADER */
+header{
+    padding:30px;
+    background:rgba(0,0,0,0.6); /* semi-transparent */
+    box-shadow:0 0 30px rgba(0,255,0,0.3);
+}
+
+.subtitle{
+    letter-spacing:2px;
+    font-size:20px;
+}
+
+.story{
+    padding:100px;
+    margin:30px;
+    font-size:70px;
+    color: rgb(221, 244, 238);
+}
+
+/* DOORS CONTAINER */
+.doors{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    margin-bottom:60px;
+}
+
+/* DOOR BASE */
+.door{
+    position:relative;
+    width:170px;
+    height:270px;
+    perspective:1000px;
+}
+
+/* DOOR FRONT */
+.door-front{
+    position:absolute;
+    inset:0;
+    transform-origin:left;
+    transition:1s;
+    z-index:2;
+}
+
+/* OPEN ON HOVER */
+.door:hover .door-front{
+    transform:rotateY(-140deg);
+}
+
+/* DOOR KNOB */
+.knob{
+    width:20px;
+    height:20px;
+    background:black;
+    border-radius:50%;
+    position:absolute;
+    top:120px;
+    left:140px;
+}
+
+/* DOOR BACK */
+.door-back{
+    position:absolute;
+    inset:0;
+    background:#000;
+    outline:4px solid white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+/* BUTTON BASE */
+.enter-btn{
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    color:black;
+    box-shadow:0 0 15px;
+    transition:0.3s;
+}
+
+/* GREEN DOOR */
+.door-green .door-front{
+    background:green;
+}
+.door-green .enter-btn{
+    background:limegreen;
+    box-shadow:0 0 15px lime;
+}
+
+/* BLUE DOOR */
+.door-blue .door-front{
+    background:#1e90ff;
+}
+.door-blue .enter-btn{
+    background:#1e90ff;
+    box-shadow:0 0 15px #1e90ff;
+}
+
+/* RED DOOR */
+.door-red .door-front{
+    background:#c0392b;
+}
+.door-red .enter-btn{
+    background:#c0392b;
+    box-shadow:0 0 15px #c0392b;
+}
+
+/* BUTTON HOVER */
+.enter-btn:hover{
+    background:white;
+}
+
+/* FOOTER */
+footer{
+    font-size:12px;
+    opacity:0.6;
+}
+

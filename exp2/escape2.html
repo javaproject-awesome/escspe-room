@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Peaceful Escape</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:radial-gradient(circle,#002200,#000000);
+    color:white;
+    text-align:center;
+}
+
+.container{
+    padding:50px;
+    width:520px;
+    background:rgba(0,255,100,0.08);
+    border-radius:25px;
+    box-shadow:0 0 40px #00ff66;
+    animation: pulse 2s infinite alternate;
+}
+
+h1{
+    font-size:44px;
+    margin-bottom:20px;
+    color:#00ff66;
+}
+
+p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+#count{
+    font-size:32px;
+    font-weight:bold;
+    color:#00ff66;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:12px;
+    background:#00ff66;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#00cc55;
+    box-shadow:0 0 20px #00ff66;
+}
+
+@keyframes pulse{
+    from{ box-shadow:0 0 20px #00ff66; }
+    to{ box-shadow:0 0 70px #00ff66; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1> YOU ESCAPED SAFELY </h1>
+    <p>The Green Door opens gently.</p>
+    <p>Returning to Home in <span id="count">5</span> seconds...</p>
+
+    <button onclick="window.location.href='index.html'">
+         Return Home Now
+    </button>
+</div>
+
+<script>
+let timeLeft = 5;
+let countdown = document.getElementById("count");
+
+let timer = setInterval(function(){
+    timeLeft--;
+    countdown.textContent = timeLeft;
+
+    if(timeLeft <= 0){
+        clearInterval(timer);
+        window.location.href = "index.html";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>

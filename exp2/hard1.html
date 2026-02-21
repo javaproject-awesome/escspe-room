@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>🔴 Hard Door – Extreme Challenge</title>
+
+<style>
+body{
+  font-family:Arial;
+  text-align:center;
+  background:radial-gradient(circle,#000,#2b0000,#5c0000);
+  color:white;
+  padding-top:60px;
+}
+
+.box{
+  width:600px;
+  margin:auto;
+  background:rgba(255,0,0,0.08);
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 0 30px crimson;
+}
+
+h1{
+  color:crimson;
+}
+
+label{
+  display:block;
+  padding:12px;
+  margin:10px;
+  background:#111;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+label:hover{
+  background:crimson;
+  color:black;
+}
+
+input{display:none;}
+
+.correct,.wrong,
+.puzzle2,.puzzle3,.final{
+  display:none;
+  margin-top:20px;
+  padding:15px;
+  border-radius:15px;
+}
+
+button{
+  padding:12px 25px;
+  margin-top:20px;
+  border:none;
+  border-radius:12px;
+  background:red;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#ff1a1a;
+  box-shadow:0 0 15px crimson;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1> Hard Door – Final Trial</h1>
+
+<!-- PUZZLE 1 -->
+<h2> Puzzle 1: Roman Cipher</h2>
+
+<p>
+X V I I I<br>
++ I V<br>
+-----------<br>
+?
+</p>
+
+<input type="radio" name="p1" id="h1w1">
+<label for="h1w1">20</label>
+
+<input type="radio" name="p1" id="h1w2">
+<label for="h1w2">24</label>
+
+<input type="radio" name="p1" id="h1c">
+<label for="h1c">22</label>
+
+<div class="wrong1 wrong">❌ Wrong calculation.</div>
+<div class="correct1 correct">✅ Correct! Puzzle 2 unlocked.</div>
+
+<!-- PUZZLE 2 -->
+<div class="puzzle2">
+
+<h2> Puzzle 2: The Two Guardians</h2>
+
+<p>
+Two guardians stand before two doors.<br>
+One always lies. One always tells truth.<br>
+You may ask ONE question to ONE guardian.<br>
+Which question guarantees safety?
+</p>
+
+<input type="radio" name="p2" id="h2w1">
+<label for="h2w1">"Which door is safe?"</label>
+
+<input type="radio" name="p2" id="h2w2">
+<label for="h2w2">"Are you the liar?"</label>
+
+<input type="radio" name="p2" id="h2c">
+<label for="h2c">
+"If I asked the other guardian which door is safe,
+which would he choose?"
+</label>
+
+<div class="wrong2 wrong">❌ Incorrect question!</div>
+<div class="correct2 correct">✅ Correct! Final puzzle unlocked.</div>
+
+</div>
+
+<!-- PUZZLE 3 -->
+<div class="puzzle3">
+
+<h2> Puzzle 3: Cipher Decode</h2>
+
+<p>
+1 = A<br>
+2 = B<br>
+...<br>
+26 = Z<br><br>
+8 - 1 - 18 - 4
+</p>
+
+<input type="radio" name="p3" id="h3w1">
+<label for="h3w1">FIRE</label>
+
+<input type="radio" name="h3w2" id="h3w2">
+<label for="h3w2">FEAR</label>
+
+<input type="radio" name="p3" id="h3c">
+<label for="h3c">HARD</label>
+
+<div class="wrong3 wrong">❌ The cipher rejects you!</div>
+
+<div class="final">
+ CONGRATULATIONS!  
+<br><br>
+You conquered the Hard Door!
+<br><br>
+
+
+<button onclick="window.location.href='escape1.html'">
+ RETURN HOME
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* Hide puzzles initially */
+document.querySelector(".puzzle2").style.display = "none";
+document.querySelector(".puzzle3").style.display = "none";
+
+/* Puzzle 1 */
+document.querySelectorAll('input[name="p1"]').forEach(option => {
+  option.addEventListener("change", function(){
+
+    document.querySelector(".wrong1").style.display = "none";
+    document.querySelector(".correct1").style.display = "none";
+
+    if(this.id === "h1c"){
+      document.querySelector(".correct1").style.display = "block";
+      document.querySelector(".correct1").style.background = "lightgreen";
+      document.querySelector(".correct1").style.color = "black";
+      document.querySelector(".puzzle2").style.display = "block";
+    } else {
+      document.querySelector(".wrong1").style.display = "block";
+      document.querySelector(".wrong1").style.background = "crimson";
+    }
+  });
+});
+
+/* Puzzle 2 */
+document.querySelectorAll('input[name="p2"]').forEach(option => {
+  option.addEventListener("change", function(){
+
+    document.querySelector(".wrong2").style.display = "none";
+    document.querySelector(".correct2").style.display = "none";
+
+    if(this.id === "h2c"){
+      document.querySelector(".correct2").style.display = "block";
+      document.querySelector(".correct2").style.background = "lightgreen";
+      document.querySelector(".correct2").style.color = "black";
+      document.querySelector(".puzzle3").style.display = "block";
+    } else {
+      document.querySelector(".wrong2").style.display = "block";
+      document.querySelector(".wrong2").style.background = "crimson";
+    }
+  });
+});
+
+/* Puzzle 3 */
+document.querySelectorAll('input[name="p3"]').forEach(option => {
+  option.addEventListener("change", function(){
+
+    document.querySelector(".wrong3").style.display = "none";
+    document.querySelector(".final").style.display = "none";
+
+    if(this.id === "h3c"){
+      document.querySelector(".final").style.display = "block";
+      document.querySelector(".final").style.background = "lightgreen";
+      document.querySelector(".final").style.color = "black";
+    } else {
+      document.querySelector(".wrong3").style.display = "block";
+      document.querySelector(".wrong3").style.background = "crimson";
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
