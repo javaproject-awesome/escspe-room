@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hard Door Escaped</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:radial-gradient(circle,#000,#2b0000,#5c0000);
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    padding:50px;
+    width:500px;
+    background:rgba(255,0,0,0.08);
+    border-radius:25px;
+    box-shadow:0 0 40px crimson;
+    animation: glow 2s infinite alternate;
+}
+
+h1{
+    font-size:48px;
+    margin-bottom:20px;
+    color:crimson;
+}
+
+p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+#count{
+    font-size:30px;
+    font-weight:bold;
+    color:#ff4d4d;
+}
+
+@keyframes glow{
+    from{ box-shadow:0 0 20px crimson; }
+    to{ box-shadow:0 0 70px red; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>  HARD DOOR ESCAPED  </h1>
+    <p>You conquered the hardest challenge.</p>
+    <p>Returning to Home in <span id="count">5</span> seconds...</p>
+</div>
+
+<script>
+let timeLeft = 5;
+let countdown = document.getElementById("count");
+
+let timer = setInterval(function(){
+    timeLeft--;
+    countdown.textContent = timeLeft;
+
+    if(timeLeft <= 0){
+        clearInterval(timer);
+        window.location.href = "index.html";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>You Escaped!</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:radial-gradient(circle,#000,#001f3f,#000814);
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    padding:50px;
+    width:500px;
+    background:rgba(255,255,255,0.08);
+    border-radius:25px;
+    box-shadow:0 0 40px #00ffff;
+    animation: glow 2s infinite alternate;
+}
+
+h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+#count{
+    font-size:28px;
+    font-weight:bold;
+    color:#00ffff;
+}
+
+@keyframes glow{
+    from{ box-shadow:0 0 20px #00ffff; }
+    to{ box-shadow:0 0 60px #00ffff; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1> YOU ESCAPED! </h1>
+    <p>Congratulations! You solved all the puzzles.</p>
+    <p>Redirecting to Home in <span id="count">5</span> seconds...</p>
+</div>
+
+<script>
+let timeLeft = 5;
+let countdown = document.getElementById("count");
+
+let timer = setInterval(function(){
+    timeLeft--;
+    countdown.textContent = timeLeft;
+
+    if(timeLeft <= 0){
+        clearInterval(timer);
+        window.location.href = "index.html";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Memory Puzzle</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: radial-gradient(circle, #ff512f, #dd2476);
+      color: white;
+    }
+
+    h1 { margin: 20px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 80px);
+      gap: 15px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .card {
+      width: 80px;
+      height: 80px;
+      background: white;
+      color: black;
+      font-size: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 15px;
+    }
+
+    .matched {
+      background: lightgreen;
+      cursor: default;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🃏 Memory Match Puzzle</h1>
+  <p>Match all pairs to win!</p>
+
+  <div class="grid" id="game"></div>
+  <h2 id="msg"></h2>
+
+  <script>
+    let symbols = ["🍎","🍎","🍌","🍌","🍇","🍇","🍉","🍉"];
+    symbols.sort(() => 0.5 - Math.random());
+
+    let first = null;
+    let second = null;
+    let matchedPairs = 0;
+
+    const game = document.getElementById("game");
+
+    symbols.forEach(symbol => {
+      let card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = "?";
+
+      card.onclick = function () {
+        if (card.classList.contains("matched") || card === first) return;
+
+        card.innerHTML = symbol;
+
+        if (!first) {
+          first = card;
+        } else {
+          second = card;
+
+          if (first.innerHTML === second.innerHTML) {
+            first.classList.add("matched");
+            second.classList.add("matched");
+            matchedPairs++;
+
+            if (matchedPairs === 4) {
+              document.getElementById("msg").innerHTML =
+                "🎉 You matched all pairs!";
+            }
+
+            first = null;
+            second = null;
+          } else {
+            setTimeout(() => {
+              first.innerHTML = "?";
+              second.innerHTML = "?";
+              first = null;
+              second = null;
+            }, 800);
+          }
+        }
+      };
+
+      game.appendChild(card);
+    });
+  </script>
+</body>
+</html>
