@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Red Door – Hard Challenge</title>
+
+<style>
+
+body{
+  font-family:Arial;
+  text-align:center;
+  background:radial-gradient(circle,#000,#2b0000,#5c0000);
+  color:white;
+  padding-top:60px;
+}
+
+.box{
+  width:600px;
+  margin:auto;
+  background:rgba(255,0,0,0.08);
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 0 30px crimson;
+}
+
+h1{
+  color:crimson;
+}
+
+label{
+  display:block;
+  padding:12px;
+  margin:10px;
+  background:#111;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+label:hover{
+  background:crimson;
+  color:black;
+}
+
+input{display:none;}
+
+.correct,.wrong,
+.q2,.q3,.final{
+  display:none;
+  margin-top:20px;
+  padding:15px;
+  border-radius:15px;
+}
+
+button{
+  padding:12px 25px;
+  margin-top:20px;
+  border:none;
+  border-radius:12px;
+  background:red;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#ff1a1a;
+  box-shadow:0 0 15px crimson;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Red Door – Hard Challenge</h1>
+
+<h2>Question 1</h2>
+<p>
+I am not alive, but I grow.<br>
+I don't have lungs, but I need air.<br>
+What am I?
+</p>
+
+<input type="radio" name="r1" id="r1w1">
+<label for="r1w1">Water</label>
+
+<input type="radio" name="r1" id="r1c">
+<label for="r1c">Fire</label>
+
+<input type="radio" name="r1" id="r1w2">
+<label for="r1w2">Shadow</label>
+
+<div class="wrong1 wrong">❌ Wrong!</div>
+<div class="correct1 correct">Correct! Next question unlocked.</div>
+
+
+<div class="q2">
+
+<h2>Question 2</h2>
+
+<p>
+What has cities but no houses,
+rivers but no water,
+forests but no trees?
+</p>
+
+<input type="radio" name="r2" id="r2c">
+<label for="r2c">Map</label>
+
+<input type="radio" name="r2" id="r2w1">
+<label for="r2w1">Dream</label>
+
+<input type="radio" name="r2" id="r2w2">
+<label for="r2w2">Painting</label>
+
+<div class="wrong2 wrong">❌ Wrong!</div>
+<div class="correct2 correct">Correct! Final question unlocked.</div>
+
+</div>
+
+
+<div class="q3">
+
+<h2>Final Question</h2>
+
+<p>
+The more you take, the more you leave behind.  
+What are they?
+</p>
+
+<input type="radio" name="r3" id="r3w1">
+<label for="r3w1">Memories</label>
+
+<input type="radio" name="r3" id="r3c">
+<label for="r3c">Footsteps</label>
+
+<input type="radio" name="r3" id="r3w2">
+<label for="r3w2">Shadows</label>
+
+<div class="wrong3 wrong">❌ Wrong!</div>
+
+<div class="final">
+
+YOU ESCAPED THE RED DOOR!
+
+<br><br>
+
+<button onclick="window.location.href='escape.html'">
+RETURN HOME
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+document.querySelector(".q2").style.display="none";
+document.querySelector(".q3").style.display="none";
+
+document.querySelectorAll('input[name="r1"]').forEach(option=>{
+option.addEventListener("change",function(){
+
+document.querySelector(".wrong1").style.display="none";
+document.querySelector(".correct1").style.display="none";
+
+if(this.id==="r1c"){
+document.querySelector(".correct1").style.display="block";
+document.querySelector(".q2").style.display="block";
+}else{
+document.querySelector(".wrong1").style.display="block";
+}
+
+});
+});
+
+document.querySelectorAll('input[name="r2"]').forEach(option=>{
+option.addEventListener("change",function(){
+
+document.querySelector(".wrong2").style.display="none";
+document.querySelector(".correct2").style.display="none";
+
+if(this.id==="r2c"){
+document.querySelector(".correct2").style.display="block";
+document.querySelector(".q3").style.display="block";
+}else{
+document.querySelector(".wrong2").style.display="block";
+}
+
+});
+});
+
+document.querySelectorAll('input[name="r3"]').forEach(option=>{
+option.addEventListener("change",function(){
+
+document.querySelector(".wrong3").style.display="none";
+document.querySelector(".final").style.display="none";
+
+if(this.id==="r3c"){
+document.querySelector(".final").style.display="block";
+}else{
+document.querySelector(".wrong3").style.display="block";
+}
+
+});
+});
+
+</script>
+
+</body>
+</html>
